@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        p {
+            line-height: 1.6;
+            text-align: center;
+        }
+        .welcome-message {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .navbar {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px;
+            text-align: right;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        Welcome, {{ user.username }}!
+        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" style="background: none; border: none; color: white; text-decoration: underline; cursor: pointer; font-size: inherit;">Logout</button>
+        </form>
+    </div>
+    <div class="container">
+        <h1>Welcome to My Django App</h1>
+        <p class="welcome-message">This is the home page of App 1.</p>
+        <p>Thank you for visiting our website. We're excited to have you here!</p>
+        <p><a href="{% url 'todo_list' %}">View Todos</a> | <a href="/calculator/">Calculator</a></p>
+    </div>
+</body>
+</html>
